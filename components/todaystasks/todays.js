@@ -3,8 +3,10 @@ import { db } from "../../firebase-config";
 import { getDocs, collection, doc, updateDoc, addDoc } from "@firebase/firestore";
 import format from "date-fns/format";
 function Todaystasks() {
+    //DATEBASE-FIREBASE
     const TasksCollectionref = collection(db, "todaystaks");
     const [users, setUsers] = useState([]);
+    //GET METHOD
     useEffect(() => {
         const getUsers = async () => {
             const data = await getDocs(TasksCollectionref);
@@ -17,6 +19,7 @@ function Todaystasks() {
     const currentDate = new Date();
     const options = { year: "numeric", month: "long", day: "numeric" };
     const dateString = currentDate.toLocaleDateString("en-US", options);
+    //POST METHOD
     const handleSubmit = async (event) => {
         event.preventDefault();
         console.log(dateString);
@@ -30,6 +33,7 @@ function Todaystasks() {
             location.reload();
         }, 1000);
     };
+    //UPDATE METHOD
     const handleState = async (user, e) => {
         e.preventDefault();
         const userDoc = doc(db, "todaystaks", user.id);
