@@ -11,7 +11,7 @@ function Todaystasks() {
             setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
         };
         getUsers();
-    }, []);
+    }, [TasksCollectionref]);
     const [subject, setsubject] = useState("");
     const [message, setmessage] = useState("");
     const currentDate = new Date();
